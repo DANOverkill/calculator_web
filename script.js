@@ -1,11 +1,25 @@
 //    -------         DOM CASH        ------
 const displayText = document.querySelector('#displayText');
+const clearButton = document.querySelector('#clear');
 //    -------            UI           ------
 window.addEventListener('keydown', (e) => {
-    displayText.textContent = e.key;
-    console.log(e.key);
+    if(!e.code.includes('Numpad')) {return}
+    memoryOne.push(e.key)
+    displayText.textContent = memoryOne.join('');
+    console.log(memoryOne);
+})
+
+clearButton.addEventListener('click', () => {
+    memoryOne = [];
+    displayText.textContent = memoryOne.join('');
+    console.log(memoryOne);
+
 })
 //    -------           LOGIC         ------
+
+let memoryOne = [];
+let memoryTwo = [];
+
 function sum (a, b) {
     let sum = a + b;
     return sum;
