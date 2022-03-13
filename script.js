@@ -23,26 +23,42 @@ let memoryTwo = [];
 let operator = [];
 
 function sum (a, b) {
-    let sum = a + b;
-    return sum;
+    let sum = (+a) + (+b);
+    memoryOne = [parseFloat(Math.round(sum * 1100000000) / 100000000)]
+    memoryTwo = []
+    operator = []
+    displayText.textContent = memoryOne.join('');
+    console.log(memoryOne)
 }
 
 function subtration(a, b) {
-    let subtration = a - b;
-    return subtration;
+    let subtration = (+a) - (+b);
+    memoryOne = [parseFloat(Math.round(subtration * 100000000) / 100000000)]
+    memoryTwo = []
+    operator = []
+    displayText.textContent = memoryOne.join('');
+    console.log(memoryOne);
 }
 
 function multiplication(a, b) {
-    let multiplication = a * b;
-    return multiplication;
+    let multiplication = (+a) * (+b);
+    memoryOne = [parseFloat(Math.round(multiplication * 100000000) / 100000000)]
+    memoryTwo = []
+    operator = []
+    displayText.textContent = memoryOne.join('');
+    console.log(memoryOne);
 }
 
 function division(a, b) {
-    if (a == 0 || b == 0) {
+    if ((+a) == 0 || (+b) == 0) {
         displayText.textContent = 'ERROR!';
         return ('ERROR!')}
-    let division = a / b; 
-    return division;
+    let division = (+a) / (+b); 
+    memoryOne = [parseFloat(Math.round(division * 100000000) / 100000000)]
+    memoryTwo = []
+    operator = []
+    displayText.textContent = memoryOne.join('');
+    console.log(memoryOne);
 }
 
 function operate (num1, operator, num2) {
