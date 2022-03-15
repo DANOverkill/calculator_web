@@ -39,7 +39,7 @@ window.addEventListener('keydown', (e) => {
                 }
             }
             else if (memoryOne.length > 1 && memoryOne[0] == '-' && memoryOne.length < 10) {
-                if (e.key != '/' && e.key != '*' && e.key != '-' && e.key != '+'){
+                if (e.key != '/' && e.key != '*' && e.key != '-' && e.key != '+' && e.key != 'Enter'){
                     if (!memoryOne.includes('.') && !memoryOne.includes('0.')) {
                         if (e.key == '.') {
                             memoryOne.push(e.key)
@@ -78,7 +78,7 @@ window.addEventListener('keydown', (e) => {
                 }
             }
             else if (memoryOne.length > 0 && memoryOne[0] != '-' && memoryOne.length < 10) {
-                if (e.key != '/' && e.key != '*' && e.key != '-' && e.key != '+') {
+                if (e.key != '/' && e.key != '*' && e.key != '-' && e.key != '+' && e.key != 'Enter') {
                     if (!memoryOne.includes('.') && !memoryOne.includes('0.')) {
                         memoryOne.push(e.key)
                         displayText.textContent = memoryOne.join('');
@@ -239,7 +239,7 @@ function subtration(a, b) {
 }
 
 function multiplication(a, b) {
-    let multiplication = parseFloat(Math.round(((+a) * (+b)) * 100000000) / 100000000);;
+    let multiplication = parseFloat(Math.round(((+a) * (+b)) * 100000000) / 100000000);
     return multiplication;
 }
 
@@ -247,7 +247,7 @@ function division(a, b) {
     if ((+a) == 0 || (+b) == 0) {
         displayText.textContent = 'ERROR!';
         return ('ERROR!')}
-    let division = parseFloat(Math.round(((+a) / (+b)) * 100000000) / 100000000);; 
+    let division = parseFloat(Math.round(((+a) / (+b)) * 100000000) / 100000000);
     return division;
 }
 
