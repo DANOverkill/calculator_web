@@ -165,12 +165,31 @@ window.addEventListener('keydown', (e) => {
                     let op = operator.join('')
                     let result = (operate(m1, op, m2))
                     console.log(m1, op, m2)
-                    memoryOne = [result];
-                    memoryTwo = [];
-                    operator = [];
-                    operator.push(e.key)
-                    displayText.textContent = '';
-                    displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` + ' ';
+                    if (result == '0') {
+                        clear();
+                    }
+                    else {
+                        memoryOne = [result];
+                        console.log(memoryOne)
+                        let answerSizeCheck = SizeChecker(memoryOne)
+                        console.log(answerSizeCheck)
+                        if (answerSizeCheck == true) {
+                            memoryTwo = [];
+                            operator = [];
+                            operator.push(e.key)
+                            displayText.textContent = '';
+                            displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` + ' ';
+                        }
+                        else if (answerSizeCheck == false) {
+                            memoryOne = ['999999999']
+                            memoryTwo = [];
+                            operator = [];
+                            operator.push(e.key)
+                            displayText.textContent = '';
+                            displayText.textContent = `99999999E` + ' ' + `${operator.join('')}` + ' ';
+                        }
+                    }
+                    
                 }
                 else if (e.key == 'Enter') {
                     let m1 = memoryOne.join('')
@@ -178,11 +197,28 @@ window.addEventListener('keydown', (e) => {
                     let op = operator.join('')
                     let result = (operate(m1, op, m2))
                     console.log(m1, op, m2)
-                    memoryOne = [result];
-                    memoryTwo = [];
-                    operator = [];
-                    displayText.textContent = '';
-                    displayText.textContent = memoryOne.join('')
+                    if (result == '0') {
+                        clear();
+                    }
+                    else {
+                        memoryOne = [result];
+                        console.log(memoryOne)
+                        let answerSizeCheck = SizeChecker(memoryOne)
+                        console.log(answerSizeCheck)
+                        if (answerSizeCheck == true) {
+                            memoryTwo = [];
+                            operator = [];
+                            displayText.textContent = '';
+                            displayText.textContent = memoryOne.join('')
+                        }
+                        else if (answerSizeCheck == false) {
+                            memoryOne = ['999999999']
+                            memoryTwo = [];
+                            operator = [];
+                            displayText.textContent = '';
+                            displayText.textContent = `99999999E`;
+                        }
+                    }
                 }
             }
             else if (memoryTwo.length == 10) {
@@ -192,12 +228,31 @@ window.addEventListener('keydown', (e) => {
                     let op = operator.join('')
                     let result = (operate(m1, op, m2))
                     console.log(m1, op, m2)
-                    memoryOne = [result];
-                    memoryTwo = [];
-                    operator = [];
-                    operator.push(e.key)
-                    displayText.textContent = '';
-                    displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` + ' ';
+                    if (result == '0') {
+                        clear();
+                    }
+                    else {
+                        memoryOne = [result];
+                        console.log(memoryOne)
+                        let answerSizeCheck = SizeChecker(memoryOne)
+                        console.log(memoryOne)
+                        console.log(answerSizeCheck)
+                        if (answerSizeCheck == true) {
+                            memoryTwo = [];
+                            operator = [];
+                            operator.push(e.key)
+                            displayText.textContent = '';
+                            displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` + ' ';
+                        }
+                        else if (answerSizeCheck == false) {
+                            memoryOne = ['999999999']
+                            memoryTwo = [];
+                            operator = [];
+                            operator.push(e.key)
+                            displayText.textContent = '';
+                            displayText.textContent = `99999999E` + ' ' + `${operator.join('')}` + ' ';
+                        }
+                    }
                 }
                 else if (e.key == 'Enter') {
                     let m1 = memoryOne.join('')
@@ -205,11 +260,29 @@ window.addEventListener('keydown', (e) => {
                     let op = operator.join('')
                     let result = (operate(m1, op, m2))
                     console.log(m1, op, m2)
-                    memoryOne = [result];
-                    memoryTwo = [];
-                    operator = [];
-                    displayText.textContent = '';
-                    displayText.textContent = memoryOne.join('')
+                    if (result == '0') {
+                        clear();
+                    }
+                    else {
+                        memoryOne = [result];
+                        console.log(memoryOne)
+                        let answerSizeCheck = SizeChecker(memoryOne)
+                        console.log(answerSizeCheck)
+                        if (answerSizeCheck == true) {
+                            memoryTwo = [];
+                            operator = [];
+                            displayText.textContent = '';
+                            displayText.textContent = memoryOne.join('')
+                        }
+                        else if (answerSizeCheck == false) {
+                            memoryOne = ['999999999']
+                            memoryTwo = [];
+                            operator = [];
+                            displayText.textContent = '';
+                            displayText.textContent = `99999999E`;
+                        }
+                
+                    }
                 }
             }
         }
@@ -217,10 +290,7 @@ window.addEventListener('keydown', (e) => {
 })
 
 clearButton.addEventListener('click', () => {
-    memoryOne = [];
-    operator = [];
-    memoryTwo = [];
-    displayText.textContent = '0';
+    clear();
 })
 
 //    -------           LOGIC         ------
@@ -264,4 +334,19 @@ function operate (num1, operator, num2) {
     if (operator == '/') {
         return division(num1, num2);
     }
+}
+function SizeChecker (arr) {
+    let string = arr.toString();
+    let splitArr = string.split('');
+    if (splitArr.length <= 9) {
+        return true;
+    } else {return false;}
+}
+function clear () {
+    return (
+        memoryOne = [],
+        memoryTwo = [],
+        operator = [],
+        displayText.textContent = '0'
+    )
 }
