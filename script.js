@@ -3,25 +3,42 @@ const displayText = document.querySelector('#displayText');
 const clearButton = document.querySelector('#clear');
 
 //    -------            UI           ------
-window.addEventListener('click', (e) => {
-    if (buttonValues.includes(e.path[0].dataset.value)){
-        uiLogic (e.path[0].dataset.value)
-    }
-    else if (e.path[0].dataset.value == 'Backspace') {
-        backSpace();
-    }
-})
-window.addEventListener('keydown', (e) => {
-    if (buttonValues.includes(e.key)) {
-        uiLogic (e.key);
-    }
-    else if (e.key == 'Backspace') {
-        backSpace();
-    }
-})
-clearButton.addEventListener('click', () => {
-    clear();
-})
+if ("ontouchstart" in document.documentElement) {
+    window.addEventListener('touch', (e) => {
+        if (buttonValues.includes(e.path[0].dataset.value)){
+            console.log(e)
+            uiLogic (e.path[0].dataset.value)
+        }
+        else if (e.path[0].dataset.value == 'Backspace') {
+            backSpace();
+        }
+    })
+    clearButton.addEventListener('touch', () => {
+        clear();
+    })
+}
+else if (!"ontouchstart" in document.documentElement) {
+    window.addEventListener('click', (e) => {
+        if (buttonValues.includes(e.path[0].dataset.value)){
+            console.log(e)
+            uiLogic (e.path[0].dataset.value)
+        }
+        else if (e.path[0].dataset.value == 'Backspace') {
+            backSpace();
+        }
+    })
+    window.addEventListener('keydown', (e) => {
+        if (buttonValues.includes(e.key)) {
+            uiLogic (e.key);
+        }
+        else if (e.key == 'Backspace') {
+            backSpace();
+        }
+    })
+    clearButton.addEventListener('click', () => {
+        clear();
+    })
+}
 
 //    -------           LOGIC         ------
 let memoryOne = [];
