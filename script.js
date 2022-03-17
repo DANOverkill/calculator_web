@@ -12,7 +12,6 @@ window.addEventListener('click', (e) => {
     }
 })
 window.addEventListener('keydown', (e) => {
-    console.log(e.key)
     if (buttonValues.includes(e.key)) {
         uiLogic (e.key);
     }
@@ -82,7 +81,6 @@ function clear () {
 function backSpace () {
     if(memoryTwo.length > 0){
         memoryTwo.splice(-1, 1);
-        console.log(memoryTwo);
         displayText.textContent = `${memoryOne.join('')}` +
                                 ' ' + `${operator.join('')}` +
                                 ' ' + `${memoryTwo.join('')}`;
@@ -90,7 +88,6 @@ function backSpace () {
     else if (memoryTwo.length == 0) {
         if (operator.length > 0) {
             operator.splice(-1, 1);
-            console.log(operator);
             displayText.textContent = `${memoryOne.join('')}`
         }
         else if (operator.length == 0){
@@ -102,7 +99,6 @@ function backSpace () {
                 memoryOne.splice(-1, 1);
                 displayText.textContent = '0';
             }
-
         }
     }
 }
@@ -115,19 +111,16 @@ function uiLogic (imp) {
                 memoryOne.push('0.')
                 displayText.textContent = ''; 
                 displayText.textContent = memoryOne.join(''); 
-                console.log('condition (memoryOne.length == 0 - imp == .) was triggered');
             }
             else if (imp == '-') {
                 memoryOne.push(imp)
                 displayText.textContent = '';
                 displayText.textContent = memoryOne.join(''); 
-                console.log('condition (memoryOne.length == 0 - imp == -) was triggered'); 
             }
             else {
                 memoryOne.push(imp)
                 displayText.textContent = '';
                 displayText.textContent = memoryOne.join('');
-                console.log('condition (memoryOne.length == 0 ELSE) was triggered');
             }
         }
         else if (memoryOne.length > 0 && memoryOne[0] == '-' && memoryOne.length <= 1 ) {
@@ -136,7 +129,6 @@ function uiLogic (imp) {
                     if (imp == '.') {
                         memoryOne.push('0.')
                         displayText.textContent = memoryOne.join(''); 
-                        console.log('condition (memoryOne.length == 0 - imp == .) was triggered');
                     }
                 }
             }
@@ -147,12 +139,10 @@ function uiLogic (imp) {
                     if (imp == '.') {
                         memoryOne.push(imp)
                         displayText.textContent = memoryOne.join(''); 
-                        console.log('condition (memoryOne.length == 0 - imp == .) was triggered');
                     }
                     else {
                     memoryOne.push(imp)
                     displayText.textContent = memoryOne.join('');
-                    console.log('condition (memoryOne.length > 0) was triggered');
                     }
                 }
                 else if (memoryOne.includes('0.') || memoryOne.includes('.')) {
@@ -160,9 +150,7 @@ function uiLogic (imp) {
                     else {
                         memoryOne.push(imp)
                         displayText.textContent = memoryOne.join('');
-                        console.log('condition (memoryOne.length > 0) was triggered');    
                     }
-                       
                 }
             }
             else if (imp == '/' || imp == '*' || imp == '-' || imp == '+') {
@@ -170,12 +158,10 @@ function uiLogic (imp) {
                     memoryOne.push('0')
                     displayText.textContent = memoryOne.join('');
                     operator.push(imp)
-                    console.log(operator)
                     displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` + ' ';
                 }
                 else {
                     operator.push(imp)
-                    console.log(operator)
                     displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` + ' ';    
                 }
             }
@@ -185,14 +171,12 @@ function uiLogic (imp) {
                 if (!memoryOne.includes('.') && !memoryOne.includes('0.')) {
                     memoryOne.push(imp)
                     displayText.textContent = memoryOne.join('');
-                    console.log('condition (memoryOne.length > 0) and NOT an doperator was triggered');
                 }
                 else if (memoryOne.includes('0.') || memoryOne.includes('.')) {
                     if (imp == '.') {return}
                     else if (imp != '/' || imp != '*' || imp != '-' || imp != '+') {
                         memoryOne.push(imp)
                         displayText.textContent = memoryOne.join('');
-                        console.log('condition (memoryOne.length > 0) and NOT an doperator was triggered');    
                     }
                 }
             }
@@ -201,12 +185,10 @@ function uiLogic (imp) {
                     memoryOne.push('0')
                     displayText.textContent = memoryOne.join('');
                     operator.push(imp)
-                    console.log(operator)
                     displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` + ' ';
                 }
                 else {
                     operator.push(imp)
-                    console.log(operator)
                     displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` + ' ';    
                 }
             }
@@ -217,12 +199,10 @@ function uiLogic (imp) {
                     memoryOne.push('0')
                     displayText.textContent = memoryOne.join('');
                     operator.push(imp)
-                    console.log(operator)
                     displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` + ' ';
                 }
                 else {
                     operator.push(imp)
-                    console.log(operator)
                     displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` + ' ';    
                 }
             }
@@ -235,13 +215,11 @@ function uiLogic (imp) {
                 memoryTwo.push('0.')
                 displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` 
                                             + ' ' + `${memoryTwo.join('')}`; 
-                console.log('memory Two Sruff');
             }
             else {
                 memoryTwo.push(imp)
                 displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` 
                                             + ' ' + `${memoryTwo.join('')}`; 
-                console.log('memory two stuff');
             }
         }
         else if (memoryTwo.length > 0 && memoryTwo.length < 10) {
@@ -250,7 +228,6 @@ function uiLogic (imp) {
                     memoryTwo.push(imp)
                     displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` 
                                             + ' ' + `${memoryTwo.join('')}`; 
-                    console.log('memory two stuff');
                 }
                 else if (memoryTwo.includes('0.') || memoryTwo.includes('.')) {
                     if (imp == '.') {return}
@@ -258,7 +235,6 @@ function uiLogic (imp) {
                         memoryTwo.push(imp)
                         displayText.textContent = `${memoryOne.join('')}` + ' ' + `${operator.join('')}` 
                                             + ' ' + `${memoryTwo.join('')}`; 
-                        console.log('memory two stuff');    
                     }
                 }
             }
@@ -267,7 +243,6 @@ function uiLogic (imp) {
                 let m2 = memoryTwo.join('')
                 let op = operator.join('')
                 let result = (operate(m1, op, m2))
-                console.log(m1, op, m2)
                 if (result == '0') {
                     clear();
                 }
@@ -286,7 +261,6 @@ function uiLogic (imp) {
                 let m2 = memoryTwo.join('')
                 let op = operator.join('')
                 let result = (operate(m1, op, m2))
-                console.log(m1, op, m2)
                 if (result == '0') {
                     clear();
                 }
@@ -305,7 +279,6 @@ function uiLogic (imp) {
                 let m2 = memoryTwo.join('')
                 let op = operator.join('')
                 let result = (operate(m1, op, m2))
-                console.log(m1, op, m2)
                 if (result == '0') {
                     clear();
                 }
@@ -323,7 +296,6 @@ function uiLogic (imp) {
                 let m2 = memoryTwo.join('')
                 let op = operator.join('')
                 let result = (operate(m1, op, m2))
-                console.log(m1, op, m2)
                 if (result == '0') {
                     clear();
                 }
