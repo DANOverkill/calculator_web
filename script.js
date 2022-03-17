@@ -7,10 +7,17 @@ window.addEventListener('click', (e) => {
     if (buttonValues.includes(e.path[0].dataset.value)){
         uiLogic (e.path[0].dataset.value)
     }
+    else if (e.path[0].dataset.value == 'Backspace') {
+        backSpace();
+    }
 })
 window.addEventListener('keydown', (e) => {
+    console.log(e.key)
     if (buttonValues.includes(e.key)) {
         uiLogic (e.key);
+    }
+    else if (e.key == 'Backspace') {
+        backSpace();
     }
 })
 clearButton.addEventListener('click', () => {
@@ -70,6 +77,34 @@ function clear () {
         operator = [],
         displayText.textContent = '0'
     )
+}
+
+function backSpace () {
+    if(memoryTwo.length > 0){
+        memoryTwo.splice(-1, 1);
+        console.log(memoryTwo);
+        displayText.textContent = `${memoryOne.join('')}` +
+                                ' ' + `${operator.join('')}` +
+                                ' ' + `${memoryTwo.join('')}`;
+    }
+    else if (memoryTwo.length == 0) {
+        if (operator.length > 0) {
+            operator.splice(-1, 1);
+            console.log(operator);
+            displayText.textContent = `${memoryOne.join('')}`
+        }
+        else if (operator.length == 0){
+            if (memoryOne.length > 1) {
+                memoryOne.splice(-1, 1);
+                displayText.textContent = `${memoryOne.join('')}`
+            }
+            else {
+                memoryOne.splice(-1, 1);
+                displayText.textContent = '0';
+            }
+
+        }
+    }
 }
 
 function uiLogic (imp) {
