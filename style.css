@@ -118,11 +118,3 @@ html, body {
     outline-color: rgb(43, 63, 63); 
     outline-style: inset;  
 }
-
-
-
-/* #zero {
-    position: relative;
-    grid-column: 1 / 2;
-    grid-row-start: 4;
-} */
