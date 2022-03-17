@@ -29,7 +29,8 @@ let memoryTwo = [];
 let operator = [];
 let buttonValues = ['1', '2', '3', '4', '5', 
                     '6', '7', '8', '9', '0',
-                    '+', '-', '*', '/', 'Enter',
+                    '+', '-', '*', '/', '.',
+                    'Enter',
                     ];
 
 function sum (a, b) {
