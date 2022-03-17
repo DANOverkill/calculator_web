@@ -3,10 +3,6 @@ const displayText = document.querySelector('#displayText');
 const clearButton = document.querySelector('#clear');
 
 //    -------            UI           ------
-window.addEventListener('touchend', (e) => {
-    return;
-})
-
 window.addEventListener('click', (e) => {
     if (buttonValues.includes(e.path[0].dataset.value)){
         uiLogic (e.path[0].dataset.value)
