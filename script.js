@@ -124,13 +124,15 @@ function uiLogic (imp) {
                 displayText.textContent = memoryOne.join('');
             }
         }
-        else if (memoryOne.length > 0 && memoryOne[0] == '-' && memoryOne.length <= 1 ) {
+        else if (memoryOne.length == 1 && memoryOne[0] == '-') {
             if (imp != '/' && imp != '*' && imp != '-' && imp != '+' && imp != 'Enter'){
-                if (!memoryOne.includes('.') && !memoryOne.includes('0.')) {
-                    if (imp == '.') {
-                        memoryOne.push('0.')
-                        displayText.textContent = memoryOne.join(''); 
-                    }
+                if (imp == '.') {
+                    memoryOne.push('0.')
+                    displayText.textContent = memoryOne.join(''); 
+                }
+                else {
+                    memoryOne.push(imp)
+                    displayText.textContent = memoryOne.join(''); 
                 }
             }
         }
