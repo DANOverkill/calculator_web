@@ -21,6 +21,8 @@ html, body {
     width: 420px;
     height: 550px;
     touch-action: manipulation;
+    border-radius: 5px;
+    box-shadow: 9px 9px 2px 1px rgba(0, 0, 255, .2);
 }
 
 #display{
@@ -117,4 +119,11 @@ html, body {
     outline-width: 1px;
     outline-color: rgb(43, 63, 63); 
     outline-style: inset;  
+}
+
+#footer{
+    text-align: center;
+    position: relative;
+    padding-top: 18px;
+
 }
