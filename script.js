@@ -27,6 +27,7 @@ clearButton.addEventListener('click', () => {
 let memoryOne = [];
 let memoryTwo = [];
 let operator = [];
+let numberOfOperations = 0;
 let buttonValues = ['1', '2', '3', '4', '5', 
                     '6', '7', '8', '9', '0',
                     '+', '-', '*', '/', '.',
@@ -57,6 +58,7 @@ function division(a, b) {
 }
 
 function operate (num1, operator, num2) {
+    numberOfOperations++
     if (operator == '+') {
         return sum(num1, num2);
     }
@@ -75,6 +77,7 @@ function clear () {
         memoryOne = [],
         memoryTwo = [],
         operator = [],
+        numberOfOperations = 0,
         displayText.textContent = '0'
     )
 }
@@ -171,7 +174,8 @@ function uiLogic (imp) {
         }
         else if (memoryOne.length > 0 && memoryOne[0] != '-' && memoryOne.length < 10) {
             if (imp != '/' && imp != '*' && imp != '-' && imp != '+' && imp != 'Enter') {
-                if (!memoryOne.includes('.') && !memoryOne.includes('0.')) {
+                if (numberOfOperations > 0) {return}
+                else if (!memoryOne.includes('.') && !memoryOne.includes('0.')) {
                     memoryOne.push(imp)
                     displayText.textContent = memoryOne.join('');
                 }
