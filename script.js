@@ -4,10 +4,11 @@ const clearButton = document.querySelector('#clear');
 
 //    -------            UI           ------
 window.addEventListener('click', (e) => {
-    if (buttonValues.includes(e.path[0].dataset.value)){
-        uiLogic (e.path[0].dataset.value)
+    console.log(e.target.dataset.value)
+    if (buttonValues.includes(e.target.dataset.value)){
+        uiLogic (e.target.dataset.value)
     }
-    else if (e.path[0].dataset.value == 'Backspace') {
+    else if (e.target.dataset.value == 'Backspace') {
         backSpace();
     }
 })
